@@ -24,7 +24,7 @@ Utilizando o Git Bash.
 
 Clone o repositório no diretório de sua preferência usando:
 ```
-git clone https://Igormeu/CodigosAutoProcessos
+git clone https://github.com/Igormeu/CodigosAutoProcessos
 ```
 Após finalizar, utilize:
 ``` 
