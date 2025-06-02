@@ -38,42 +38,79 @@ subprocess.Popen(sap_path)
 # Aguardar o SAP Business One abrir
 time.sleep(20)  # Ajuste o tempo, se necessário
 
-# Inserir o usuário e a senha
-usuario = ""
-senha = ""
 
-# Digitar o usuário
-py.write(usuario)
-py.press('TAB')
-time.sleep(2)
-py.write(senha)
-py.press('enter')  # Pressionar Enter para fazer login
-
-time.sleep(30)  # Espera para escolher a filial
-# py.doubleClick(x=45, y=189)  # Clica na filial
-# time.sleep(3)
-
-#Fechar todos os pop-ups
-
-# Entrar no modulo do Addon
-py.keyDown('alt')
-py.press('m')
-py.press('a')
-py.press('a')
-py.press('a')
-py.keyUp('alt')
 
 # Ativar addon
-md.coo
+try:
+    # Inserir o usuário e a senha
+    usuario = ""
+    senha = ""
 
-py.click(x=1083, y=238)
-time.sleep(2)
-py.click(x=1723, y=930)
-time.sleep(90)
+    # Digitar o usuário
+    py.write(usuario)
+    py.press('TAB')
+    time.sleep(2)
+    py.write(senha)
+    py.press('enter')  
 
-# Vai para o BankPlus
-py.click(x=416, y=15)
-for _ in range(16):
-    py.press('down')
-    time.sleep(0.1)  # Pequena pausa para garantir execução correta
-py.press('enter')
+    time.sleep(30)  
+
+    #Remover Por-Up
+    x,y = md.coordenadas_imagem("imgs/FecharWelcome.png", 10)
+    x = x+20
+    coordenadas = x,y
+    py.click(coordenadas)
+
+    time.sleep(2)  
+
+    x,y = md.coordenadas_imagem("imgs/FecharFiliais.png", 10)
+    x = x+20
+    coordenadas = x,y
+    py.click(coordenadas)
+
+    time.sleep(2) 
+
+    #Ir até a aba do Addon
+    py.keyDown('alt')
+    py.press('m')
+    py.press('a')
+    py.press('a')
+    py.press('a')
+    py.keyUp('alt')
+
+    #Ativar Addon
+    coordenadas = md.coordenadas_imagem("imgs/LinhaDoAddon.png", 10)
+    py.click(coordenadas,clicks=2)
+
+    #Iniciar Addon
+    x,y = md.coordenadas_imagem("imgs/LigareSairdaTela.png", 10)
+    x = x+50
+    coordenadas = x,y
+    py.click(coordenadas)
+
+    time.sleep(2)
+
+    x,y = md.coordenadas_imagem("imgs/LigareSairdaTela.png", 10)
+    x = x-50
+    coordenadas = x,y
+
+    py.click(coordenadas)
+
+    time.sleep(2)
+
+except Exception:
+    print("Erro ao executar o RPA")
+
+
+
+# py.click(x=1083, y=238)
+# time.sleep(2)
+# py.click(x=1723, y=930)
+# time.sleep(90)
+
+# # Vai para o BankPlus
+# py.click(x=416, y=15)
+# for _ in range(16):
+#     py.press('down')
+#     time.sleep(0.1)  # Pequena pausa para garantir execução correta
+# py.press('enter')
