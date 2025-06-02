@@ -39,8 +39,8 @@ subprocess.Popen(sap_path)
 time.sleep(20)  # Ajuste o tempo, se necessário
 
 # Inserir o usuário e a senha
-usuario = "marcia.lima"
-senha = "2300"
+usuario = ""
+senha = ""
 
 # Digitar o usuário
 py.write(usuario)
